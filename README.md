@@ -4,6 +4,7 @@ A simple game, where you.. just click the virtual Toblerone chocolate bar. That'
 ### Features
 - Great for fighting boredom or stress. Just launch the game and start clicking the virtual Toblerone chocolate bar. I am not responsible for mouse/touch screen damage as well.
 - Available on literally every platform since this is a web game. You just need a web browser that supports HTML5, CSS3 and JavaScript.
+- Have enough Tobleron Points? Use them in the in-game shop!
 
 ### End note
 I am not endorsed nor affiliated with Toblerone. I created this simple game just for fun. No copyright infringement was intended.

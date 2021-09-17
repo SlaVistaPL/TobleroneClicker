@@ -9,17 +9,109 @@
         <link href="assets/master.css" rel="stylesheet" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="assets/master.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         <noscript>Sorry to bother you, but you need JavaScript to be enabled in order to run this game.</noscript>
     </head>
-    <body class="container bg-dark text-white" onload="checkSupport()" id="game">
+    <body class="container bg-dark text-white" onload="checkSupport(); loadShopData();" id="game">
         <h1>Toblerone Clicker</h1>
-        <h4 style="font-weight: normal;" id="clicks">Clicks: Loading...</h4>
-        <div class="click-here" onclick="countToblerone()">
+        <h4 style="font-weight: normal;" id="clicks">Kliknięć: Loading...</h4>
+        <div class="click-here" onclick="countToblerone();">
             <img src="assets/tobleron.png" width="192px" />
         </div><br>
+        <button type="button" class="btn btn-primary btn-lg" style="font-size: 1em;" data-bs-toggle="modal" data-bs-target="#storeModal">Wejdź do sklepu</button><br>
         <p style="text-align: center;">
             I am not endorsed nor affiliated with Toblerone. I created this simple game just for fun.<br>
             <span style="color: #ffffffdd">&copy; 2021, SlaVistaPL. Full source code can be <a href="https://github.com/SlaVistaPL/TobleroneClicker">found on Github</a> as well!</span>
         </p>
+
+        <!-- store modal -->
+        <div class="modal fade" id="storeModal" tabindex="-1" aria-labelledby="storeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Sklep z ulepszeniami</h5>
+                      <i class="fas fa-times click-icon" data-bs-dismiss="modal" style="font-size: 1.2em; cursor: pointer;"></i>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-dark" role="alert">
+                            <b>TPPS</b> to skrót od "Tobleron Points Per Second".
+                        </div>
+                       <div class="container-fluid" style="border-bottom: 1px solid #ffffffdd;">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-9">
+                                    <h3>Leniwy autoclicker</h3>
+                                    <p>
+                                        Ten autoclicker będzie w stanie wykonać za Ciebie żmudną robotę, klikając w wirtualne Toblerone.<br>
+                                        Nie spodziewaj się jednak kokosów.
+                                    </p>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1em;" id="buy-item-1" onclick="buyItemOne();"><i class="fas fa-shopping-basket"></i> Kup ulepszenie</button><br>
+                                    <p>
+                                        <b>Koszt:</b> 50 Tobleron Points<br>
+                                        <b>TPPS:</b> 0.5
+                                    </p>
+                                </div>
+                            </div>
+                       </div><br>
+                       <div class="container-fluid" style="border-bottom: 1px solid #ffffffdd;">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-9">
+                                    <h3>Zwyczajny autoclicker</h3>
+                                    <p>
+                                        Autoclicker, który jest nieco szybszy, ale też również za wiele z tego nie wyciśniesz.<br>
+                                        Przynajmniej według deweloperów.
+                                    </p>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1em;" id="buy-item-2" onclick="buyItemTwo();"><i class="fas fa-shopping-basket"></i> Kup ulepszenie</button><br>
+                                    <p>
+                                        <b>Koszt:</b> 100 Tobleron Points<br>
+                                        <b>TPPS:</b> 1
+                                    </p>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="container-fluid" style="border-bottom: 1px solid #ffffffdd;">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-9">
+                                    <h3>Podwójny autoclicker</h3>
+                                    <p>
+                                        Jeszcze szybszy autoclicker. Tym razem już potrafi coś zdziałać.
+                                    </p>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1em;" id="buy-item-3" onclick="buyItemThree();"><i class="fas fa-shopping-basket"></i> Kup ulepszenie</button><br>
+                                    <p>
+                                        <b>Koszt:</b> 250 Tobleron Points<br>
+                                        <b>TPPS:</b> 2
+                                    </p>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="container-fluid" style="border-bottom: 1px solid #ffffffdd;">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-9">
+                                    <h3>Recenzje Ciacha</h3>
+                                    <p>
+                                        "Toblerone było bardzo drogie. Kosztowało 8.50 PLN."
+                                    </p>
+                                </div>
+                                <div class="col-sm-12 col-md-3">
+                                    <button type="button" class="btn btn-primary btn-lg btn-block" style="font-size: 1em;" id="buy-item-4" onclick="buyItemFour();"><i class="fas fa-shopping-basket"></i> Kup ulepszenie</button><br>
+                                    <p>
+                                        <b>Koszt:</b> 1000 Tobleron Points<br>
+                                        <b>TPPS:</b> 5
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
